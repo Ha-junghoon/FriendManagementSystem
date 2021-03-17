@@ -44,6 +44,8 @@ public class MenuManager {
 				System.out.print("Friends number:");
 				System.out.print("Friends name: ");
 				break;
+			case 5:
+				break;
 			}
 				
 		}
