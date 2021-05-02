@@ -1,13 +1,17 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import friend.AcademyFriend;
+import friend.CircleFriend;
 import friend.Friend;
+import friend.FriendKind;
 import friend.HighSchoolFriend;
+import friend.OfficeFriend;
+import friend.UniversityFriend;
 
 public class FriendManager {
 	ArrayList<Friend> friends = new ArrayList<Friend>();
 	Scanner input;
-
 	FriendManager(Scanner input) {
 		this.input = input;
 
@@ -15,39 +19,55 @@ public class FriendManager {
 	public void addFriend() {
 		int kind = 0;
 		Friend friend;
-		while(kind != 1 && kind !=2) {
-			System.out.print("Select Friend Kind\n");
-			System.out.print("1 for University\n");
-			System.out.print("2 for Highschool\n");
-			System.out.print("Select num for Friend Kind between 1 and 2:");
+		while(kind != 1 && kind !=2 && kind !=3 && kind !=4 && kind !=5) {
+			System.out.println("1 for University");
+			System.out.println("2 for Highschool");
+			System.out.println("3 for Academy");
+			System.out.println("4 for Circle");
+			System.out.println("5 for Office");
+			System.out.println("Select num for Friend Kind between 1,2,3,4,5:");
 			kind = input.nextInt();
 			if (kind == 1) {
-				friend = new Friend();
+				friend = new UniversityFriend(FriendKind.University);
 				friend.getUserInput(input);
 				friends.add(friend);
 				break;
 			}
 
 			else if(kind == 2) {
-				friend = new HighSchoolFriend();
+				friend = new HighSchoolFriend(FriendKind.HighSchool);
+				friend.getUserInput(input);
+				friends.add(friend);
+				break;
+			}
+			else if(kind == 3) {
+				friend = new AcademyFriend(FriendKind.Academy);
+				friend.getUserInput(input);
+				friends.add(friend);
+				break;
+			}
+			else if(kind == 4) {
+				friend = new CircleFriend(FriendKind.Circle);
+				friend.getUserInput(input);
+				friends.add(friend);
+				break;			
+			}
+			else if(kind == 5) {
+				friend = new OfficeFriend(FriendKind.Office);
 				friend.getUserInput(input);
 				friends.add(friend);
 				break;
 			}
 			else {
-				System.out.print("Select num for Friend Kind between 1 and 2:");
-
+				System.out.print("Select num for Friend Kind between 1,2,3,4,5:");
 			}
 		}
-		
-
-
 	}
 	public void deleteFriend() {
 		System.out.print("Friends ID :");
 		int friendId = input.nextInt();
 		int index = -1;
-		for (int i=0; i<friends.size();i++) {
+		for (int i=0; i<friends.size(); i++) {
 			if(friends.get(i).getId() == friendId) {
 				index = i;
 				break;

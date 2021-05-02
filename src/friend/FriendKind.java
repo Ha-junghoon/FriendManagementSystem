@@ -2,9 +2,9 @@ package friend;
 
 public enum FriendKind {
 	University,
-	Highschool,
+	HighSchool,
 	Academy,
-	Family,
+	Circle,
 	Office
 
 }

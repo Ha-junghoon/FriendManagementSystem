@@ -2,13 +2,13 @@ package friend;
 
 import java.util.Scanner;
 
-public class HighSchoolFriend extends Friend {
-	public HighSchoolFriend(FriendKind kind) {
-		super(kind);
-	}
+public class OfficeFriend extends Friend {
 	protected String familyemail;
 	protected String familyphone; 
 
+	public OfficeFriend(FriendKind kind) {
+		super(kind);
+	}
 	public void getUserInput(Scanner input) {
 		System.out.print("Friends ID :");
 		int id = input.nextInt();

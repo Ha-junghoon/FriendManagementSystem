@@ -12,12 +12,23 @@ public class Friend {
 	public Friend() {
 
 	}
+	public Friend(FriendKind kind) {
+		this.kind = kind;
+
+	}
 
 	public Friend(String name, int id) {
 		this.name = name;
 		this.id = id;
 	}
 	public Friend(String name, int id, String email, String phone) {
+		this.name = name;
+		this.id = id;
+		this.email = email;
+		this.phone = phone;
+	}
+	public Friend(FriendKind kind,String name, int id, String email, String phone) {
+		this.kind = kind;	
 		this.name = name;
 		this.id = id;
 		this.email = email;
@@ -64,10 +75,27 @@ public class Friend {
 		this.phone = phone;
 	}
 
-
-
-	public void printinfo() {
-		System.out.println("name: " + name+ " id: "+ id+ " email: " + email+ " phone : "+ phone);
+	public void printinfo(){
+		String skind = "none";
+		switch(this.kind) {
+		case University:
+			skind = "Univ.";
+			break;
+		case HighSchool:
+			skind = "High.";
+			break;
+		case Academy:
+			skind = "Acad.";
+			break;
+		case Circle:
+			skind = "Cir.";
+			break;
+		case Office:
+			skind = "Off.";
+			break;
+		default:			
+		}
+		System.out.println("kind:"+skind+"name: " + name+ " id: "+ id+ " email: " + email+ " phone : "+ phone);
 
 	}
 	public void getUserInput(Scanner input) {
