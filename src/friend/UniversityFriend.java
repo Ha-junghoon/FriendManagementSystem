@@ -2,7 +2,7 @@ package friend;
 
 import java.util.Scanner;
 
-public class UniversityFriend extends Friend {
+public class UniversityFriend extends Friend implements FriendInput{
 
 	protected String familyemail;
 	protected String familyphone; 
@@ -93,7 +93,7 @@ public class UniversityFriend extends Friend {
 		}
 	}
 	
-	public void printinfo(){
+	public void printInfo(){
 		String skind = "none";
 		switch(this.kind) {
 		case University:

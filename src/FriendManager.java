@@ -4,13 +4,14 @@ import java.util.Scanner;
 import friend.AcademyFriend;
 import friend.CircleFriend;
 import friend.Friend;
+import friend.FriendInput;
 import friend.FriendKind;
 import friend.HighSchoolFriend;
 import friend.OfficeFriend;
 import friend.UniversityFriend;
 
 public class FriendManager {
-	ArrayList<Friend> friends = new ArrayList<Friend>();
+	ArrayList<FriendInput> friends = new ArrayList<FriendInput>();
 	Scanner input;
 	FriendManager(Scanner input) {
 		this.input = input;
@@ -18,7 +19,7 @@ public class FriendManager {
 	}
 	public void addFriend() {
 		int kind = 0;
-		Friend friend;
+		FriendInput friendInput;
 		while(kind != 1 && kind !=2 && kind !=3 && kind !=4 && kind !=5) {
 			System.out.println("1 for University");
 			System.out.println("2 for Highschool");
@@ -28,34 +29,34 @@ public class FriendManager {
 			System.out.println("Select num for Friend Kind between 1,2,3,4,5:");
 			kind = input.nextInt();
 			if (kind == 1) {
-				friend = new UniversityFriend(FriendKind.University);
-				friend.getUserInput(input);
-				friends.add(friend);
+				friendInput = new UniversityFriend(FriendKind.University);
+				friendInput.getUserInput(input);
+				friends.add(friendInput);
 				break;
 			}
 
 			else if(kind == 2) {
-				friend = new HighSchoolFriend(FriendKind.HighSchool);
-				friend.getUserInput(input);
-				friends.add(friend);
+				friendInput = new HighSchoolFriend(FriendKind.HighSchool);
+				friendInput.getUserInput(input);
+				friends.add(friendInput);
 				break;
 			}
 			else if(kind == 3) {
-				friend = new AcademyFriend(FriendKind.Academy);
-				friend.getUserInput(input);
-				friends.add(friend);
+				friendInput = new AcademyFriend(FriendKind.Academy);
+				friendInput.getUserInput(input);
+				friends.add(friendInput);
 				break;
 			}
 			else if(kind == 4) {
-				friend = new CircleFriend(FriendKind.Circle);
-				friend.getUserInput(input);
-				friends.add(friend);
+				friendInput = new CircleFriend(FriendKind.Circle);
+				friendInput.getUserInput(input);
+				friends.add(friendInput);
 				break;			
 			}
 			else if(kind == 5) {
-				friend = new OfficeFriend(FriendKind.Office);
-				friend.getUserInput(input);
-				friends.add(friend);
+				friendInput = new OfficeFriend(FriendKind.Office);
+				friendInput.getUserInput(input);
+				friends.add(friendInput);
 				break;
 			}
 			else {
@@ -93,8 +94,8 @@ public class FriendManager {
 	System.out.print("Friends ID :");
 	int friendId = input.nextInt();
 	for (int i=0; i<friends.size();i++) {
-		Friend friend = friends.get(i);
-		if(friend.getId() == friendId) {
+		FriendInput friendInput = friends.get(i);
+		if(friendInput.getId() == friendId) {
 			int num = -1;
 
 			while (num != 5) {
@@ -109,22 +110,22 @@ public class FriendManager {
 				if (num == 1) {
 					System.out.println("Friends ID : ");
 					int id = input.nextInt();
-					friend.setId(id);
+					friendInput.setId(id);
 				}
 				else if (num == 2) {
 					System.out.println("Friends Name : ");
 					String name = input.next();	
-					friend.setName(name);
+					friendInput.setName(name);
 				}
 				else if (num == 3) {
 					System.out.println("Friends Email : ");
 					String email = input.next();
-					friend.setEmail(email);
+					friendInput.setEmail(email);
 				}
 				else if (num == 4) {
 					System.out.println("Phone Number : ");
 					String phone = input.next();	
-					friend.setPhone(phone);
+					friendInput.setPhone(phone);
 				}
 				else {
 					continue;
@@ -139,7 +140,7 @@ public class FriendManager {
 		//		System.out.print("Friends ID :");
 		//		int friendId = input.nextInt();
 		for (int i=0; i<friends.size();i++) {
-			friends.get(i).printinfo();
+			friends.get(i).printInfo();
 
 		}
 

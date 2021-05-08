@@ -2,7 +2,7 @@ package friend;
 
 import java.util.Scanner;
 
-public class Friend {
+public abstract class  Friend {
 	protected FriendKind kind = FriendKind.University;
 	protected String name;
 	protected int id;
@@ -75,43 +75,9 @@ public class Friend {
 		this.phone = phone;
 	}
 
-	public void printinfo(){
-		String skind = "none";
-		switch(this.kind) {
-		case University:
-			skind = "Univ.";
-			break;
-		case HighSchool:
-			skind = "High.";
-			break;
-		case Academy:
-			skind = "Acad.";
-			break;
-		case Circle:
-			skind = "Cir.";
-			break;
-		case Office:
-			skind = "Off.";
-			break;
-		default:			
-		}
-		System.out.println("kind:"+skind+"name: " + name+ " id: "+ id+ " email: " + email+ " phone : "+ phone);
+	public abstract void printInfo();
+	 
 
-	}
-	public void getUserInput(Scanner input) {
-		System.out.print("Friends ID :");
-		int id = input.nextInt();
-		this.setId(id);
-		System.out.print("Friends name :");
-		String name = input.next();
-		this.setName(name);
-		System.out.print("Email address :");
-		String email = input.next();
-		this.setEmail(email);
-		System.out.print("Phone number :");
-		String phone = input.next();
-		this.setPhone(phone);
-	}
 
 }
 
