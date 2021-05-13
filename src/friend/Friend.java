@@ -2,7 +2,9 @@ package friend;
 
 import java.util.Scanner;
 
-public abstract class  Friend {
+import exceptions.EmailFormatException;
+
+public abstract class  Friend implements FriendInput{
 	protected FriendKind kind = FriendKind.University;
 	protected String name;
 	protected int id;
@@ -34,7 +36,7 @@ public abstract class  Friend {
 		this.email = email;
 		this.phone = phone;
 	}
-	
+
 	public FriendKind getKind() {
 		return kind;
 	}
@@ -63,7 +65,11 @@ public abstract class  Friend {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException {
+		if (!email.contains("@")&& !email.equals("")) {
+
+			throw new EmailFormatException();
+		}
 		this.email = email;
 	}
 
@@ -76,7 +82,57 @@ public abstract class  Friend {
 	}
 
 	public abstract void printInfo();
-	 
+
+
+	public void setFriendID(Scanner input) {
+		System.out.println("Friends ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	public void setFriendName(Scanner input) {
+		System.out.println("Friends Name : ");
+		String name = input.next();	
+		this.setName(name);
+	}
+	public void setFriendEmail(Scanner input) {
+		String email = "";
+		while(!email.contains("@")) {
+			System.out.println("Friends Email : ");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @");
+			}
+		}
+	}
+	public void setFriendPhone(Scanner input) {
+		System.out.println("Phone Number : ");
+		String phone = input.next();	
+		this.setPhone(phone);
+	}
+	public String getkindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case University:
+			skind = "Univ.";
+			break;
+		case HighSchool:
+			skind = "High.";
+			break;
+		case Academy:
+			skind = "Acad.";
+			break;
+		case Circle:
+			skind = "Cir.";
+			break;
+		case Office:
+			skind = "Off.";
+			break;
+		default:			
+		}
+		return skind;
+	}
 
 
 }
