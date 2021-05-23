@@ -1,10 +1,15 @@
 package friend;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exceptions.EmailFormatException;
 
-public abstract class  Friend implements FriendInput{
+public abstract class  Friend implements FriendInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1684560454828111978L;
 	protected FriendKind kind = FriendKind.University;
 	protected String name;
 	protected int id;

@@ -1,19 +1,24 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import friend.AcademyFriend;
 import friend.CircleFriend;
-import friend.Friend;
 import friend.FriendInput;
 import friend.FriendKind;
 import friend.HighSchoolFriend;
 import friend.OfficeFriend;
 import friend.UniversityFriend;
 
-public class FriendManager {
+public class FriendManager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 853923515474595371L;
+	
 	ArrayList<FriendInput> friends = new ArrayList<FriendInput>();
-	Scanner input;
+	transient Scanner input;
 	FriendManager(Scanner input) {
 		this.input = input;
 
