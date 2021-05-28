@@ -13,7 +13,7 @@ public class MenuManager {
 	static EventLogger logger = new EventLogger("log.txt");
 
 	public static void main(String[] args) {
-		
+
 		Scanner input = new Scanner(System.in);
 		FriendManager friendManager = getObject("studentmanager.ser");
 		if(friendManager == null) {
@@ -75,17 +75,17 @@ public class MenuManager {
 
 	public static FriendManager getObject(String filename) {
 		FriendManager friendManager = null;
-		
+
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			
+
 			friendManager = (FriendManager)in.readObject();
-			
+
 			in.close();
 			file.close();
-			
-			
+
+
 		} catch (FileNotFoundException e) {
 			return friendManager;
 		}
@@ -98,19 +98,19 @@ public class MenuManager {
 		}
 		return friendManager;
 	}
-	
+
 	public static void putObject(FriendManager friendManager, String filename) {
-		
+
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
-			
+
 			out.writeObject(friendManager);
-			
+
 			out.close();
 			file.close();
-			
-			
+
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,5 +121,3 @@ public class MenuManager {
 		}
 	}
 }
-
-
