@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +6,7 @@ import java.util.Scanner;
 
 import friend.AcademyFriend;
 import friend.CircleFriend;
+import friend.Friend;
 import friend.FriendInput;
 import friend.FriendKind;
 import friend.HighSchoolFriend;
@@ -149,7 +151,14 @@ public class FriendManager implements Serializable{
 		}
 
 	}
+	
+	public int size() {
+		return friends.size();
+	}
 
+	public FriendInput get(int index) {
+		return (Friend) friends.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println("*** Friends Management System Menu ***");
 		System.out.println("1. Edit Id");
