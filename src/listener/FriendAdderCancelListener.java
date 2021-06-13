@@ -9,17 +9,17 @@ import gui.FriendAdder;
 import gui.FriendViewer;
 import gui.WindowFrame;
 
-public class ButtonAddListener implements ActionListener {
+public class FriendAdderCancelListener implements ActionListener {
 
 	WindowFrame frame;
-	public ButtonAddListener(WindowFrame frame) {
+	public FriendAdderCancelListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		frame.getContentPane().removeAll();
-		frame.getContentPane().add(frame.getFriendadder());
+		frame.getContentPane().add(frame.getMenuselection());
 		frame.revalidate();
 		frame.repaint();
 	}

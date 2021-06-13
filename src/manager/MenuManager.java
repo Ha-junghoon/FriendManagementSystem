@@ -23,6 +23,9 @@ public class MenuManager {
 			friendManager = new FriendManager(input);
 
 		}
+		else {
+			friendManager.setScanner(input);
+		}
 		WindowFrame frame = new WindowFrame(friendManager);
 		selectMenu(input, friendManager);
 		putObject(friendManager,"friendmanager.ser");

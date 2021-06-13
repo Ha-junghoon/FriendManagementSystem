@@ -25,6 +25,17 @@ public class FriendManager implements Serializable{
 		this.input = input;
 
 	}
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+	public void addFriend(String id,String name, String email, String phone) {
+		FriendInput friendInput = new UniversityFriend(FriendKind.University);
+		friendInput.getUserInput(input);
+		friends.add(friendInput);
+	}
+	public void addFriend(FriendInput friendInput) {
+		friends.add(friendInput);
+	}
 	public void addFriend() {
 		int kind = 0;
 		FriendInput friendInput;
@@ -168,6 +179,8 @@ public class FriendManager implements Serializable{
 		System.out.println("5. Exit");
 		System.out.println("Select on number between 1-5:");
 	}
+
+
 
 }
 

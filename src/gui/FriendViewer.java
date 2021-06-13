@@ -16,18 +16,20 @@ public class FriendViewer extends JPanel{
 
 	FriendManager friendManager;	
 
-	public FriendViewer(WindowFrame frame, 	FriendManager friendManager) {
-		this.frame = frame;
+	public FriendManager getFriendManager() {
+		return friendManager;
+	}
+
+	public void setFriendManager(FriendManager friendManager) {
 		this.friendManager = friendManager;
-		
-		System.out.println("***"+ friendManager.size()+"***");
+		this.removeAll();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Id");
 		model.addColumn("NameE");
 		model.addColumn("Email");
 		model.addColumn("Contact Info.");
-		
+
 		for(int i=0; i< friendManager.size(); i++) {
 			Vector row = new Vector();
 			FriendInput  fi= friendManager.get(i);
@@ -38,13 +40,44 @@ public class FriendViewer extends JPanel{
 			model.addRow(row);
 		}
 
-		
-		
+
+
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
-		
+
+		this.add(sp);
+	}
+
+	public FriendViewer(WindowFrame frame, 	FriendManager friendManager) {
+		this.frame = frame;
+		this.friendManager = friendManager;
+
+		System.out.println("***"+ friendManager.size()+"***");
+
+		DefaultTableModel model = new DefaultTableModel();
+		model.addColumn("Id");
+		model.addColumn("NameE");
+		model.addColumn("Email");
+		model.addColumn("Contact Info.");
+
+		for(int i=0; i< friendManager.size(); i++) {
+			Vector row = new Vector();
+			FriendInput  fi= friendManager.get(i);
+			row.add(fi.getId());
+			row.add(fi.getName());
+			row.add(fi.getEmail());
+			row.add(fi.getPhone());
+			model.addRow(row);
+		}
+
+
+
+		JTable table = new JTable(model);
+		JScrollPane sp = new JScrollPane(table);
+
 		this.add(sp);
 
 	}
-	
+
 }
+

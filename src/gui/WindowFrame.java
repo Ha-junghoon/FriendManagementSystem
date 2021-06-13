@@ -23,7 +23,7 @@ public class WindowFrame extends JFrame{
 		
 		this.friendManager = friendManager;
 		menuselection = new MenuSelection(this);
-		friendadder = new FriendAdder(this);
+		friendadder = new FriendAdder(this,this.friendManager);
 		friendviewer = new FriendViewer(this,this.friendManager);
 		
 		

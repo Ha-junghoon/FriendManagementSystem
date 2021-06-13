@@ -7,12 +7,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listener.FriendAdderCancelListener;
+import listener.FriendAdderListener;
+import manager.FriendManager;
+
 public class FriendAdder extends JPanel{
 	WindowFrame frame;
+	FriendManager friendManager;	
 
 
-	public FriendAdder(WindowFrame frame) {
+
+	public FriendAdder(WindowFrame frame, FriendManager friendManager) {
 		this.frame = frame;
+		this.friendManager = friendManager;
+		
 		JPanel panel =new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -38,11 +46,18 @@ public class FriendAdder extends JPanel{
 		JLabel labelPhone = new JLabel("Phone: ",JLabel.TRAILING);
 		JTextField fieldPhone = new JTextField(10);
 		labelPhone.setLabelFor(fieldPhone);
+		
+		JButton saveButton = new JButton("Save");
+		saveButton.addActionListener(new FriendAdderListener(fieldID,fieldName,fieldEmail,fieldPhone, friendManager));
+		
+		JButton cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new FriendAdderCancelListener(frame));
+
 		panel.add(labelPhone);
 		panel.add(fieldPhone);
 		
-		panel.add(new JButton("Save"));
-		panel.add(new JButton("Cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6,6,6,6);
 
